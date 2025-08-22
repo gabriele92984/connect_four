@@ -1,4 +1,6 @@
-class Player
+# frozen_string_literal: true
+
+class Player # rubocop:disable Style/Documentation
   attr_reader :name, :piece
 
   def initialize(name, piece)

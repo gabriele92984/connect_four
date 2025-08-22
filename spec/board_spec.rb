@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe Board do
+describe Board do # rubocop:disable Metrics/BlockLength
   describe '#initialize' do
     let(:board) { Board.new }
-    
+
     it 'creates a 6x7 grid' do
       expect(board.grid.size).to eq(6)
       expect(board.grid.all? { |row| row.size == 7 }).to be true
     end
 
     it 'initializes with empty cells' do
-      expect(board.grid.flatten.all? { |cell| cell.nil? }).to be true
+      expect(board.grid.flatten.all?(&:nil?)).to be true
     end
   end
 
@@ -71,19 +73,19 @@ describe Board do
     it 'detects diagonal win' do
       # Setup diagonal pattern
       board.drop_piece(0, '🔴')
-      
+
       board.drop_piece(1, '🟡')
       board.drop_piece(1, '🔴')
-      
+
       board.drop_piece(2, '🟡')
       board.drop_piece(2, '🟡')
       board.drop_piece(2, '🔴')
-      
+
       board.drop_piece(3, '🟡')
       board.drop_piece(3, '🟡')
       board.drop_piece(3, '🟡')
       board.drop_piece(3, '🔴')
-      
+
       expect(board.winner?('🔴')).to be true
     end
   end

@@ -1,4 +1,6 @@
-class Board
+# frozen_string_literal: true
+
+class Board # rubocop:disable Style/Documentation
   attr_reader :grid
 
   def initialize
@@ -7,10 +9,10 @@ class Board
 
   def drop_piece(column, piece)
     return false unless valid_column?(column)
-    
+
     row = find_empty_row(column)
     return false unless row
-    
+
     @grid[row][column] = piece
     true
   end
@@ -23,28 +25,25 @@ class Board
     check_horizontal(piece) || check_vertical(piece) || check_diagonal(piece)
   end
 
-  def display
-    # Simple colored version
-    puts " 0 1 2 3 4 5 6"
-    puts "+-+-+-+-+-+-+-+"
-    
+  def display # rubocop:disable Metrics/MethodLength
+    puts ' 0 1 2 3 4 5 6'
+    puts '+-+-+-+-+-+-+-+'
+
     @grid.each do |row|
-      print "|"
+      print '|'
       row.each do |cell|
         if cell.nil?
-          print " |"
+          print ' |'
+        elsif cell == '🔴'
+          print "\e[31mR\e[0m|"
         else
-          if cell == '🔴'
-            print "\e[31mR\e[0m|"  # red R
-          else
-            print "\e[33mY\e[0m|"  # yellow Y
-          end
+          print "\e[33mY\e[0m|"
         end
       end
-      puts ""
+      puts ''
     end
-    
-    puts "+-+-+-+-+-+-+-+"
+
+    puts '+-+-+-+-+-+-+-+'
   end
 
   private
@@ -54,7 +53,7 @@ class Board
   end
 
   def find_empty_row(column)
-    (5).downto(0) do |row|
+    5.downto(0) do |row|
       return row if @grid[row][column].nil?
     end
     nil
@@ -78,7 +77,7 @@ class Board
     false
   end
 
-  def check_diagonal(piece)
+  def check_diagonal(piece) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     # Check diagonals from bottom-left to top-right
     (0..2).each do |row|
       (0..3).each do |col|

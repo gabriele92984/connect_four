@@ -1,4 +1,6 @@
-class Game
+# frozen_string_literal: true
+
+class Game # rubocop:disable Style/Documentation
   attr_reader :players, :current_player, :board
 
   def initialize(player1, player2)
@@ -18,40 +20,39 @@ class Game
   def winner
     return @players[0] if board.winner?(@players[0].piece)
     return @players[1] if board.winner?(@players[1].piece)
+
     nil
   end
 
   def play
-    until game_over?
-      play_turn
-    end
+    play_turn until game_over?
     display_result
   end
 
   def play_turn
     board.display
     puts "#{current_player.name}'s turn (#{current_player.piece})"
-    
-    column = get_valid_column # This already drops the piece
+
+    get_valid_column # This already drops the piece
     # REMOVE: board.drop_piece(column, current_player.piece)
-    
+
     switch_player unless game_over?
   end
 
   private
 
-  def get_valid_column
+  def get_valid_column # rubocop:disable Naming/AccessorMethodName
     loop do
-      print "Enter column (0-6): "
+      print 'Enter column (0-6): '
       column = gets.chomp.to_i
-      
+
       # Check if column is valid and not full
-      if column.between?(0, 6)
+      if column.between?(0, 6) && board.drop_piece(column, current_player.piece)
         # Try to drop the piece - if successful, return the column
-        return column if board.drop_piece(column, current_player.piece)
+        return column
       end
-      
-      puts "Invalid column or column is full. Try again."
+
+      puts 'Invalid column or column is full. Try again.'
     end
   end
 

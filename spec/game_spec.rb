@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe Game do
+describe Game do # rubocop:disable Metrics/BlockLength
   let(:player1) { Player.new('Player 1', '🔴') }
   let(:player2) { Player.new('Player 2', '🟡') }
   let(:game) { Game.new(player1, player2) }

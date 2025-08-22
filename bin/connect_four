@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # bin/connect_four
 
 # Add the lib directory to the load path
