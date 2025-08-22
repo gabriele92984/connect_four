@@ -24,19 +24,22 @@ class Board
   end
 
   def display
-    # Simple ASCII with perfect alignment
+    # Simple colored version
     puts " 0 1 2 3 4 5 6"
     puts "+-+-+-+-+-+-+-+"
     
     @grid.each do |row|
       print "|"
       row.each do |cell|
-        piece = if cell.nil?
-                  " "
-                else
-                  cell == '🔴' ? 'R' : 'Y'
-                end
-        print "#{piece}|"
+        if cell.nil?
+          print " |"
+        else
+          if cell == '🔴'
+            print "\e[31mR\e[0m|"  # red R
+          else
+            print "\e[33mY\e[0m|"  # yellow Y
+          end
+        end
       end
       puts ""
     end
