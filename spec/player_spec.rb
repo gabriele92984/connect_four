@@ -1,4 +1,4 @@
-require_relative '../lib/player'
+require 'spec_helper'
 
 describe Player do
   describe '#initialize' do

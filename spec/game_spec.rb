@@ -1,6 +1,4 @@
-require_relative '../lib/game'
-require_relative '../lib/player'
-require_relative '../lib/board'
+require 'spec_helper'
 
 describe Game do
   let(:player1) { Player.new('Player 1', '🔴') }

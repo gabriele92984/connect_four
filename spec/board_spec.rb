@@ -1,4 +1,4 @@
-require_relative '../lib/board'
+require 'spec_helper'
 
 describe Board do
   describe '#initialize' do
