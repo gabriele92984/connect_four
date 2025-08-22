@@ -19,7 +19,7 @@ Connect Four is a two-player connection game where players take turns dropping c
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone <https://github.com/gabriele92984/connect_four>
 cd connect_four
 ```
 
@@ -125,4 +125,4 @@ This project demonstrates:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](README.md) file for details.
