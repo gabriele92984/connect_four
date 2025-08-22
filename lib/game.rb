@@ -57,7 +57,9 @@ class Game # rubocop:disable Style/Documentation
   end
 
   def display_result
+    # Show the final board state first
     board.display
+
     if winner
       puts "#{winner.name} wins!"
     else

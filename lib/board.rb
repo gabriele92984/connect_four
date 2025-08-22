@@ -26,24 +26,19 @@ class Board # rubocop:disable Style/Documentation
   end
 
   def display # rubocop:disable Metrics/MethodLength
-    puts ' 0 1 2 3 4 5 6'
-    puts '+-+-+-+-+-+-+-+'
+    puts ''
+    puts '   0   1   2   3   4   5   6'
 
     @grid.each do |row|
       print '|'
       row.each do |cell|
-        if cell.nil?
-          print ' |'
-        elsif cell == '🔴'
-          print "\e[31mR\e[0m|"
-        else
-          print "\e[33mY\e[0m|"
-        end
+        cell_display = cell.nil? ? '⚪' : cell
+        print " #{cell_display} " # Space before and after each piece
       end
-      puts ''
+      puts '|'
     end
 
-    puts '+-+-+-+-+-+-+-+'
+    puts '------------------------------'
   end
 
   private

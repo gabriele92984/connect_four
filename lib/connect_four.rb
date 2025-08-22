@@ -7,6 +7,7 @@ require_relative 'game'
 
 class ConnectFour # rubocop:disable Style/Documentation
   def self.play
+    puts ''
     puts 'Welcome to Connect Four!'
 
     player1 = Player.new('Player 1', '🔴')
