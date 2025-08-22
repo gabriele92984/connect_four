@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# bin/connect_four
+
+# Add the lib directory to the load path
+$LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
+
+# Require the main game file
+require 'connect_four'
+
+# Start the game
+ConnectFour.play

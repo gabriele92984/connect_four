@@ -32,8 +32,8 @@ class Game
     board.display
     puts "#{current_player.name}'s turn (#{current_player.piece})"
     
-    column = get_valid_column
-    board.drop_piece(column, current_player.piece)
+    column = get_valid_column # This already drops the piece
+    # REMOVE: board.drop_piece(column, current_player.piece)
     
     switch_player unless game_over?
   end
@@ -44,7 +44,13 @@ class Game
     loop do
       print "Enter column (0-6): "
       column = gets.chomp.to_i
-      return column if column.between?(0, 6) && board.drop_piece(column, current_player.piece)
+      
+      # Check if column is valid and not full
+      if column.between?(0, 6)
+        # Try to drop the piece - if successful, return the column
+        return column if board.drop_piece(column, current_player.piece)
+      end
+      
       puts "Invalid column or column is full. Try again."
     end
   end

@@ -1,4 +1,7 @@
-require 'spec_helper'
+# lib/connect_four.rb
+require_relative 'board'
+require_relative 'player'
+require_relative 'game'
 
 class ConnectFour
   def self.play
